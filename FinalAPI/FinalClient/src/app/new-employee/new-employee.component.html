@@ -1,0 +1,19 @@
+<mat-card>
+    <span>Create new employee</span>
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="new-employee-field" >
+            <input matInput placeholder="Employee Name" formControlName='employeeName'>
+        </mat-form-field>
+        <mat-form-field class="new-employee-field" >
+            <input matInput placeholder="Employee Type" formControlName='employeeType'>
+        </mat-form-field>
+        <mat-form-field class="new-employee-field" >
+            <mat-select placeholder="Availability" formControlName='isActive'>
+                <mat-option *ngFor="let type of types" [value]="type.IsActive">
+                    {{type.display}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-raised-button [disabled]="!employeeForm.valid">Create new</button>
+    </form>
+</mat-card>
